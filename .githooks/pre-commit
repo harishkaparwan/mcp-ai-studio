@@ -1,0 +1,27 @@
+#!/bin/sh
+# Pre-commit hook: block commits that include vscode-extension/, chrome-extension/, or scripts/
+
+BLOCKED_DIRS="vscode-extension chrome-extension scripts"
+FOUND=""
+
+for dir in $BLOCKED_DIRS; do
+  matches=$(git diff --cached --name-only --diff-filter=ACMRT | grep "^$dir/")
+  if [ -n "$matches" ]; then
+    FOUND="$FOUND\n$matches"
+  fi
+done
+
+if [ -n "$FOUND" ]; then
+  echo ""
+  echo "❌  Commit blocked: the following files are in restricted directories"
+  echo "    (vscode-extension/, chrome-extension/, scripts/) and must not be committed:"
+  echo ""
+  echo "$FOUND" | sed 's/^/    /'
+  echo ""
+  echo "    Remove them from staging with:"
+  echo "      git reset HEAD <file>"
+  echo ""
+  exit 1
+fi
+
+exit 0

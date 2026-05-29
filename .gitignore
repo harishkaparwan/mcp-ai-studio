@@ -1,6 +1,9 @@
 .env
 .env.local
 node_modules/
+vscode-extension/
+chrome-extension/
+scripts/
 dist/
 extension-dist/
 web-dist/

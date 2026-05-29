@@ -1,0 +1,47 @@
+{
+  "name": "mcp-ai-studio",
+  "private": false,
+  "version": "0.2.0",
+  "description": "A browser-based AI Studio for connecting to, inspecting, and operating MCP-compatible tools.",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/harishkaparwan/mcp-ai-studio.git"
+  },
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc -b && vite build",
+    "preview": "vite preview",
+    "lint": "eslint .",
+    "podman:build": "podman build --format docker -t mcp-ai-studio:local .",
+    "podman:run": "podman run --rm -p 8080:80 mcp-ai-studio:local",
+    "chrome:sync": "npm --prefix chrome-extension run sync-ui",
+    "chrome:build": "npm run build && npm run chrome:sync",
+    "chrome:package": "npm run chrome:build && npm --prefix chrome-extension run package",
+    "extension:sync": "npm --prefix vscode-extension run sync-ui",
+    "extension:package": "npm run build && npm run extension:sync && npm --prefix vscode-extension run package",
+    "extension:publish:vscode": "npm run build && npm run extension:sync && npm --prefix vscode-extension run publish:vscode",
+    "extension:publish:windsurf": "npm run build && npm run extension:sync && npm --prefix vscode-extension run publish:open-vsx"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.29.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "zod": "^3.24.0"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.0.0",
+    "@types/node": "^20.0.0",
+    "@types/react": "^19.0.2",
+    "@types/react-dom": "^19.0.2",
+    "@vitejs/plugin-react": "^4.3.4",
+    "eslint": "^9.0.0",
+    "eslint-plugin-react-hooks": "^5.0.0",
+    "eslint-plugin-react-refresh": "^0.4.0",
+    "globals": "^15.0.0",
+    "typescript": "^5.6.0",
+    "typescript-eslint": "^8.0.0",
+    "vite": "^6.1.0"
+  }
+}

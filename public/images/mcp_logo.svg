@@ -1,0 +1,39 @@
+
+<svg width="512" height="512" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="metalBlue" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0B1F3A"/>
+      <stop offset="50%" stop-color="#1E5EFF"/>
+      <stop offset="100%" stop-color="#9ED0FF"/>
+    </linearGradient>
+
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="6" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <rect width="512" height="512" rx="120" fill="#050816"/>
+
+  <g filter="url(#glow)">
+    <polygon points="256,70 390,145 390,300 256,380 122,300 122,145"
+             fill="none"
+             stroke="url(#metalBlue)"
+             stroke-width="14"/>
+
+    <path d="M170 320 L170 180 L256 255 L342 180 L342 320"
+          fill="none"
+          stroke="url(#metalBlue)"
+          stroke-width="22"
+          stroke-linecap="round"
+          stroke-linejoin="round"/>
+
+    <circle cx="170" cy="180" r="12" fill="#9ED0FF"/>
+    <circle cx="342" cy="180" r="12" fill="#9ED0FF"/>
+    <circle cx="170" cy="320" r="12" fill="#9ED0FF"/>
+    <circle cx="342" cy="320" r="12" fill="#9ED0FF"/>
+  </g>
+</svg>
